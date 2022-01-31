@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "0f320968-ac03-407b-8c06-9c43fe2fc984",
+		"name": "CRUD - Internet Banking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/cliente/health"
+			},
+			"response": []
+		},
+		{
+			"name": "/cliente/incluir",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Wagner Cordeiro da Silva\",\r\n    \"planoExclusive\": false,\r\n    \"saldo\": 1500.00,\r\n    \"conta\": 12345,  \r\n    \"dtNascMask\": \"06/07/1995\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/cliente/incluir"
+			},
+			"response": []
+		},
+		{
+			"name": "/cliente/consultar",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/cliente/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "conta",
+							"value": "12344",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transacoes/saque",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/transacoes/saque?conta=12345&valorSaque=300",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacoes",
+						"saque"
+					],
+					"query": [
+						{
+							"key": "conta",
+							"value": "12345"
+						},
+						{
+							"key": "valorSaque",
+							"value": "300"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/transacoes/deposito",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/transacoes/deposito?conta=12345&valorDeposito=100",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacoes",
+						"deposito"
+					],
+					"query": [
+						{
+							"key": "conta",
+							"value": "12345"
+						},
+						{
+							"key": "valorDeposito",
+							"value": "100"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/extrato/consultar",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/extrato/consultar?conta=12345&data=31/01/2022",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"extrato",
+						"consultar"
+					],
+					"query": [
+						{
+							"key": "conta",
+							"value": "12345"
+						},
+						{
+							"key": "data",
+							"value": "31/01/2022"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
